@@ -2,20 +2,20 @@
 
 Vgs_op = 0.5
 Vds_op = 0.5
-Vth_op = 0.195
-Id_op = 63.486 * pow(10, -6)
+Vth_op = 0.2
+Id_op = 58.681 * pow(10, -6)
 
-xo = .4
-yo = 65.6 * pow(10, -6)
+xo = 0.5
+yo = 58.6814 * pow(10, -6)
 
-dx = 300 * pow(10, -3)
-dy = 2.46 * pow(10, -6)
+dx = 500 * pow(10, -3)
+dy = 10.595 * pow(10, -6)
 
 m = dy/dx
 print(m)
 
-W = 2.5 * pow(10, -6)
-L = 0.5 * pow(10, -6)
+W = 1.250 * pow(10, -6)
+L = 0.250 * pow(10, -6)
 
 q = yo-(xo*m)
 lamb_nmos = m/q
@@ -30,19 +30,19 @@ print(uCos_nmos)
 
 Vgs_op_pmos = 0.5
 Vds_op_pmos = 0.5
-Vth_op_pmos = -0.183903
-Id_op_pmos = 31.853 * pow(10, -6)
+Vth_op_pmos = -0.216
+Id_op_pmos = 25.374 * pow(10, -6)
 
-xo_pmos = .4
-yo_pmos = 31.49 * pow(10, -6)
+xo_pmos = .5
+yo_pmos = 25.374 * pow(10, -6)
 
-dx_pmos = 380 * pow(10, -3)
-dy_pmos = 1.143 * pow(10, -6)
+dx_pmos = 500 * pow(10, -3)
+dy_pmos = 3.4361 * pow(10, -6)
 
 m_pmos = dy_pmos/dx_pmos
 
-W_pmos = 2.5 * pow(10, -6)
-L_pmos = 0.5 * pow(10, -6)
+W_pmos = 1.250 * pow(10, -6)
+L_pmos = 0.250 * pow(10, -6)
 
 q_pmos = yo_pmos-(xo_pmos*m_pmos)
 lamb_pmos = m_pmos/q_pmos
@@ -58,10 +58,10 @@ Vgs_amp_pmos = .5
 Vds_amp_pmos = .5
 W_pmos_calc = 2*Id_op*L_pmos/(uCos_pmos*pow((Vgs_amp_pmos-Vth_op_pmos), 2)*(1+lamb_pmos*Vds_amp_pmos))
 
-print(W_pmos_calc)
+print("Wpmos espelho amp op" + str(W_pmos_calc))
 
 ### aula 23-05
-Id_op = .000064
+Id_op = .000058
 Vgs_amp_pmos = .25
 Vds_amp_pmos = .25
 W_pmos_calc = 2*Id_op*L_pmos/(uCos_pmos*pow((Vgs_amp_pmos-Vth_op_pmos), 2)*(1+lamb_pmos*Vds_amp_pmos))
@@ -69,28 +69,9 @@ W_pmos_calc = 2*Id_op*L_pmos/(uCos_pmos*pow((Vgs_amp_pmos-Vth_op_pmos), 2)*(1+la
 print(W_pmos_calc)
 
 
-Id_op = .0000128
-Vgs_amp_nmos = .38
-
+Id_op = .000116
+Vgs_amp_nmos = .3
 Vds_amp_nmos = .25
 W_nmos_calc = 2*Id_op*L_pmos/(uCos_nmos*pow((Vgs_amp_nmos-Vth_op), 2)*(1+lamb_pmos*Vds_amp_nmos))
 
 print(W_nmos_calc)
-
-
-Id_op = .000001
-Vgs_amp_nmos = .3
-
-Vds_amp_nmos = .25
-W_nmos2_calc = 2*Id_op*L_pmos/(uCos_nmos*pow((Vgs_amp_nmos-Vth_op), 2)*(1+lamb_pmos*Vds_amp_nmos))
-
-print(W_nmos2_calc)
-
-############
-x = (21.19*0.5-58.681)/21.19
-# print(1/x)
-var = (6.872*0.5-25.374)/6.872
-# print(1/var)
-
-unCox = 586.81/(pow((0.5-0.2), 2)*(1+0.44*0.5))
-# print(unCox)
