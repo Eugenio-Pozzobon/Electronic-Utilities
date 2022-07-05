@@ -2,96 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sympy as sp
 
-## BCM
-
-# Prated=200
-# E1=200
-# E2=400
-# fsw_min=50*10**3
-# Tmax=1/fsw_min
-# print ( ' fsw at the nominal operation =', fsw_min/1000,'kHz')
-# print ( ' Tmax=', Tmax*10**6,'us')
-#
-# ton=4.5*10**-6
-# t1=np.linspace(0,2*Tmax,1000)
-# ts1=t1<ton
-# ts2=(t1>=ton)*(t1<Tmax)
-# ts3=(t1>Tmax)*(t1<(ton+Tmax))
-# ts4=(t1>Tmax)*(t1>(ton+Tmax))
-# vag=1*ts1+0*ts2+1*ts3+0*ts4
-# plt.grid()
-# plt.plot(t1*10**6,15*vag,'r')
-# plt.xlabel('t (us)')
-# plt.ylabel('vgs (V)' )
-# plt.title('MOSFET gate source voltage')
-#
-# # inductance value
-#
-# L=E1**2*(E2-E1)/(2*E2*Prated*fsw_min)
-# print( 'L=',L*10**6,'uH')
-#
-# ton=(E2-E1)/(E2*fsw_min)
-# t=sp.symbols('t')
-# Irms=sp.sqrt(1/Tmax*sp.integrate( (E1*t/L)**2,(t,0,ton)))
-# print('Irms_MOSFET=',Irms,'A')
-# print('ton=',ton*10**6,'us')
-#
-# Ipeak=E1*ton/L
-# print('Ipeak=',Ipeak,'A')
-# t=sp.symbols('t')
-# Irms_diode=sp.sqrt( 1/Tmax*sp.integrate( (Ipeak+(E1-E2)/L*(t-ton))**2,(t,ton,Tmax) ) )
-# print('Irms_diode=',Irms_diode,'A')
-# Iav_diode=1/Tmax*sp.integrate( (Ipeak+(E1-E2)*(t-ton)/L),(t,ton,Tmax))
-# print('Iav_diode=',Iav_diode,'A')
-#
-# print('ton=',ton*10**6,'us')
-# iL1=(E1*t/L)
-# iL2=Ipeak+(E1-E2)/L*(t-ton)
-# Irms_inductor=sp.sqrt(1/Tmax*(sp.integrate(iL1**2,(t,0,ton))+sp.integrate(iL2**2,(t,ton,Tmax))))
-# print('RMS value of the inductor current =',Irms_inductor,'A')
-# print('Peak value of the inductor current =',Ipeak,'A')
-#
-# P=np.linspace(0.1*Prated,Prated,100)
-# fsw=E1**2*(E2-E1)/(2*E2*P*L)
-# ton=(E2-E1)/(E2*fsw)
-# plt.grid()
-# plt.plot(P,fsw/1000,'r')
-# plt.xlabel('P (W)')
-# plt.ylabel('fsw (kHz)' )
-# plt.title('Switching Frequency as function of the Power')
-#
-# ## BOST PFC BCM
-#
-# print("\n\n\n")
-#
-# t=np.linspace(0,0.05,1000)
-# w=2*pi*60
-# Vgrid=311*np.sin(w*t)
-# E1=np.abs(Vgrid)
-# E2=400*(1+t*0)
-# plt.grid()
-# plt.plot(t*10**3,E1,'r')
-# plt.plot(t*10**3,E2,'b')
-# plt.ylabel('E1 and E2 (V)')
-# plt.xlabel('t (ms)' )
-# plt.title('E1 obtained from a the rectification of as ac voltage')
-#
-# ton=10*10**-6
-# Pav=Iav*E1
-# plt.grid()
-# plt.plot(t*10**3,Pav,'r')
-# plt.ylabel('P (W)')
-# plt.xlabel('t (ms)' )
-# plt.title('Rectifier dc side Power')
-#
-# t=np.linspace(0,0.05,1000)
-# w=2*pi*60
-# Vgrid=311*np.sin(w*t)
-# E1=np.abs(Vgrid)
-# E2=400*(1+t*0)
-# fsw=E1**2*(E2-E1)/(2*E2*Pav*L)
-
-# Design
+# BOOST BCM PFC
 
 Pav = 1500
 
@@ -139,27 +50,33 @@ print('Lin', Lin * 1000000, 'u')
 print('Ffiltro', 1 / (np.sqrt(Cin * Lin) * 2 * np.pi))
 
 print('\n\n\n')
+
 # power losses in components
 
 # dados fet
 rds_on_fet = 0.022
-ids_fet = 15.69 # ver na simulação valor RMS
+ids_fet = 3.6 # ver na simulação valor RMS
 
 # dados diodo
-ids_diode_avg = 0
-ids_diode_rms = 0
-diode_voltage_drop = 0.7
-diode_bulk_resistence = 2
+ids_diode_avg = 2.87 # ver na simulação
+ids_diode_rms = 5.22 # ver na simulação
+diode_voltage_drop = 0.98+Icap_120_peak*0.04
+diode_bulk_resistence = 0.04
 
+print('diode_voltage_drop', diode_voltage_drop)
 power_dissip_fet = rds_on_fet * (ids_fet ** 2)
 power_dissip_diode = diode_bulk_resistence * (ids_diode_rms ** 2) + diode_voltage_drop * ids_diode_avg
+diode_voltage_drop = 0.98+ids_diode_avg*0.04
+print('diode_voltage_drop_rect', diode_voltage_drop)
+power_dissip_diode_rect = diode_bulk_resistence * (ids_diode_rms ** 2) + diode_voltage_drop * ids_diode_avg
 
 print('power dissip fet', power_dissip_fet)
 
 print('power dissip diode', power_dissip_diode)
 
-print('total power dissip rect-diode', 4 * power_dissip_diode)
-print('total power dissipation', power_dissip_fet + 5 * power_dissip_diode)
+print('total power dissip rect-diode', 4 * power_dissip_diode_rect)
+total_dissipation_power = power_dissip_fet + 4 * power_dissip_diode_rect + power_dissip_diode
+print('total power dissipation', total_dissipation_power)
 
 tri = 18 * 10 ** (-9) # datasheet
 tfv = 24 * 10 ** (-9) # datasheet
@@ -178,11 +95,15 @@ print('power off fet', Poff)
 
 print('Total fet comutation losses', Poff + Pon)
 
-tb_diode = 0
-IRR_diode = 0
-Cap_Rev_Diode = 0
-ReverseVoltage = 0
+# tb_diode = 0
+# IRR_diode = 0
+# Cap_Rev_Diode = 0
+# ReverseVoltage = 0
+#
+# PowerComLossDiodeConv = 1 / 2 * Cap_Rev_Diode * ReverseVoltage ** 2 * fsw_min + 1 / 6 * IRR_diode * ReverseVoltage * tb_diode * fsw_min
+#
+# print('power comutation losses in diode', PowerComLossDiodeConv)
 
-PowerComLossDiodeConv = 1 / 2 * Cap_Rev_Diode * ReverseVoltage ** 2 * fsw_min + 1 / 6 * IRR_diode * ReverseVoltage * tb_diode * fsw_min
-
-print('power comutation losses in diode', PowerComLossDiodeConv)
+total_losses = total_dissipation_power + Poff + Pon
+print("Total Losses:", total_losses)
+print("Eficienty:", Pav/(total_losses+Pav))
