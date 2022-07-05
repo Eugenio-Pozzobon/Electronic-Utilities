@@ -1,10 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 ## Flyback CCM
 
+print("\n\n\n FLYBACK CCM")
 Vin1 = 400
-Vout1 = 120
+Vout1 = 115.5
 rippleMaxOutput = 1
 Pout1 = 3000
 fs = 20000 #FET
