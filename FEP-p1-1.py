@@ -61,7 +61,7 @@ ids_fet = 3.6 # ver na simulação valor RMS
 ids_diode_avg = 2.87 # ver na simulação
 ids_diode_rms = 5.22 # ver na simulação
 
-
+# diodo boost
 ids_diode_avg_boost = 2.87 # ver na simulação
 ids_diode_rms_boost = 5.22 # ver na simulação
 
