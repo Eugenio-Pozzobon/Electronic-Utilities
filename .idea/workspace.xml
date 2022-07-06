@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23212c43-65ef-4263-ae93-18b21745816d" name="Changes" comment="aaaaaaaaaa">
+    <list default="true" id="23212c43-65ef-4263-ae93-18b21745816d" name="Changes" comment="diode boost">
+      <change afterPath="$PROJECT_DIR$/TCP-IP-Equations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FEP-p1-1.py" beforeDir="false" afterPath="$PROJECT_DIR$/FEP-p1-1.py" afterDir="false" />
     </list>
@@ -57,7 +58,7 @@
       <recent name="D:\Git\Electronic-Utilities" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.FEP-p1-2">
+  <component name="RunManager" selected="Python.FEP-p1-1">
     <configuration name="3.10" type="PythonConfigurationType" factoryName="Python">
       <module name="Electronic-Utilities" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,7 +125,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="integratedCircuits" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="TCP-IP-Equations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Electronic-Utilities" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -137,7 +138,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/integratedCircuits.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TCP-IP-Equations.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -192,19 +193,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.3.10" />
+      <item itemvalue="Python.TCP-IP-Equations" />
       <item itemvalue="Python.FEP-p1-1" />
       <item itemvalue="Python.FEP-p1-2" />
-      <item itemvalue="Python.integratedCircuits" />
       <item itemvalue="Python.integratedCircuitsFelipe" />
       <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.FEP-p1-2" />
         <item itemvalue="Python.FEP-p1-1" />
+        <item itemvalue="Python.TCP-IP-Equations" />
+        <item itemvalue="Python.FEP-p1-2" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.integratedCircuitsFelipe" />
-        <item itemvalue="Python.integratedCircuits" />
       </list>
     </recent_temporary>
   </component>
@@ -223,7 +224,8 @@
       <workItem from="1653684921534" duration="2224000" />
       <workItem from="1655433697776" duration="720000" />
       <workItem from="1656970852982" duration="6572000" />
-      <workItem from="1657035732274" duration="23128000" />
+      <workItem from="1657035732274" duration="25319000" />
+      <workItem from="1657110443013" duration="8904000" />
     </task>
     <task id="LOCAL-00001" summary="psian">
       <created>1651878877452</created>
@@ -246,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657052861005</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="diode boost">
+      <created>1657067183300</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1657067183300</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,14 +276,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="psian" />
     <MESSAGE value="aaaaaaaaaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="aaaaaaaaaa" />
+    <MESSAGE value="diode boost" />
+    <option name="LAST_COMMIT_MESSAGE" value="diode boost" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Electronic_Utilities$integratedCircuits.coverage" NAME="integratedCircuits Coverage Results" MODIFIED="1653593426838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$integratedCircuitsFelipe.coverage" NAME="integratedCircuitsFelipe Coverage Results" MODIFIED="1653685241045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p1_1.coverage" NAME="FEP-p1-1 Coverage Results" MODIFIED="1657055909135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p1_1.coverage" NAME="FEP-p1-1 Coverage Results" MODIFIED="1657129524561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$3_10.coverage" NAME="3.10 Coverage Results" MODIFIED="1651518150801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Electronic_Utilities$TCP_IP_Equations.coverage" NAME="TCP-IP-Equations Coverage Results" MODIFIED="1657129513325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$main.coverage" NAME="main Coverage Results" MODIFIED="1656971331708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Easy-Tracker-System/Docs/Teste Vibração/Software/plots" />
-    <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p1_2.coverage" NAME="FEP-p1-2 Coverage Results" MODIFIED="1657064913609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p1_2.coverage" NAME="FEP-p1-2 Coverage Results" MODIFIED="1657067841167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

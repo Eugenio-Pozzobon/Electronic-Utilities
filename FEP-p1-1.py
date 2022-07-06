@@ -8,7 +8,7 @@ Pav = 1500
 
 Peak = 2 * Pav
 
-E1 = 250
+E1 = 100
 E1peak = np.sqrt(2) * E1
 print('Peak value of the input voltage E1=', E1peak, 'V')
 print('Peak value of the input voltage E1=100rms ', 100 * np.sqrt(2), 'V')
@@ -19,10 +19,11 @@ print('Minimum switching frequency fsw_min=', fsw_min / 1000, 'kHz')
 
 L = E1peak ** 2 * (E2 - E1peak) / (2 * E2 * Peak * fsw_min)
 ton = (E2 - E1peak) / (E2 * fsw_min)
-ton_100V = 2 * Peak * L / ((100 * np.sqrt(2)) ** 2)
+
+ton_250V = 2 * Peak * L / ((250 * np.sqrt(2)) ** 2)
 print('L=', L * 10 ** 6, 'uH')
 print('ton=', ton * 10 ** 6, 'u')
-print('ton @100V=', ton_100V * 10 ** 6, 'u')
+print('ton @250V=', ton_250V * 10 ** 6, 'u')
 
 Icap_120_peak = Pav / E2
 print('Iac_120_peak=', Icap_120_peak, 'A')
@@ -58,19 +59,19 @@ rds_on_fet = 0.022
 ids_fet = 3.6 # ver na simulação valor RMS
 
 # dados diodo
-ids_diode_avg = 2.87 # ver na simulação
-ids_diode_rms = 5.22 # ver na simulação
+ids_diode_avg = 6.7 # ver na simulação para 100V (eliminar filtro de entrada)
+ids_diode_rms = 12.5 # ver na simulação para 100V
 
 # diodo boost
-ids_diode_avg_boost = 2.87 # ver na simulação
-ids_diode_rms_boost = 5.22 # ver na simulação
+ids_diode_avg_boost = 3.75 # ver na simulação para 100V
+ids_diode_rms_boost = 9.6 # ver na simulação para 100V
 
 diode_boost_voltage_drop = 0.98+Icap_120_peak*0.04
 diode_resistence = 0.04
 
 print('diode_boost_voltage_drop', diode_boost_voltage_drop)
 
-diode_rect_voltage_drop = 0.98+ids_diode_avg*0.04
+diode_rect_voltage_drop = 0.98+ids_diode_avg*diode_resistence
 print('diode_rect_voltage_drop', diode_rect_voltage_drop)
 
 power_dissip_fet = rds_on_fet * (ids_fet ** 2)
