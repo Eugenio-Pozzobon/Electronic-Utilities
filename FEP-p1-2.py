@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 
 print("\n\n\n FLYBACK CCM")
 Vin1 = 400
-Vout1 = 115.5
+Vout1 = 120
 rippleMaxOutput = 1
-Pout1 = 3000
+Pout1 = 1500
 fs = 20000 #FET
 
 N1 = 33
@@ -89,3 +89,56 @@ print('Imínima=', Imin1, 'A')
 AvC1 = rippleMaxOutput / 100
 C1 = D1 / (AvC1 * R1 * fs)
 print('C=', C1 * 10 ** 6, 'uF')
+
+
+# power losses in components
+
+# dados fet
+rds_on_fet = 0.022
+ids_fet = 5.5 # ver na simulação valor RMS
+
+# dados diodo
+ids_diode_avg = 12.17 # ver na simulação
+ids_diode_rms = 12.17 # ver na simulação
+diode_voltage_drop = 0.98+ids_diode_avg*0.04
+diode_bulk_resistence = 0.04
+
+print('diode_voltage_drop', diode_voltage_drop)
+power_dissip_fet = rds_on_fet * (ids_fet ** 2)
+power_dissip_diode = diode_bulk_resistence * (ids_diode_rms ** 2) + diode_voltage_drop * ids_diode_avg
+
+print('power dissip diode', power_dissip_diode)
+print('power dissip fet', power_dissip_fet)
+
+total_dissipation_power = power_dissip_fet + power_dissip_diode
+print('total power dissipation', total_dissipation_power)
+
+tri = 18 * 10 ** (-9) # datasheet
+tfv = 24 * 10 ** (-9) # datasheet
+ton_fet = tri + tfv
+Eon = ids_fet * VS1 * ton_fet / 2
+Pon = Eon * fs
+
+trv = 48 * 10 ** (-9) # datasheet
+tfi = 13 * 10 ** (-9) # datasheet
+toff_fet = trv + tfi
+Eon = ids_fet * VS1 * toff_fet / 2
+Poff = Eon * fs
+
+print('power on fet', Pon)
+print('power off fet', Poff)
+
+print('Total fet comutation losses', Poff + Pon)
+
+# tb_diode = 0
+# IRR_diode = 0
+# Cap_Rev_Diode = 0
+# ReverseVoltage = 0
+#
+# PowerComLossDiodeConv = 1 / 2 * Cap_Rev_Diode * ReverseVoltage ** 2 * fsw_min + 1 / 6 * IRR_diode * ReverseVoltage * tb_diode * fsw_min
+#
+# print('power comutation losses in diode', PowerComLossDiodeConv)
+
+total_losses = total_dissipation_power + Poff + Pon
+print("Total Losses:", total_losses)
+print("Eficienty:", Pout1/(total_losses+Pout1))
