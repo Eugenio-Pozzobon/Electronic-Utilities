@@ -60,22 +60,29 @@ ids_fet = 3.6 # ver na simulação valor RMS
 # dados diodo
 ids_diode_avg = 2.87 # ver na simulação
 ids_diode_rms = 5.22 # ver na simulação
-diode_voltage_drop = 0.98+Icap_120_peak*0.04
-diode_bulk_resistence = 0.04
 
-print('diode_voltage_drop', diode_voltage_drop)
+
+ids_diode_avg_boost = 2.87 # ver na simulação
+ids_diode_rms_boost = 5.22 # ver na simulação
+
+diode_boost_voltage_drop = 0.98+Icap_120_peak*0.04
+diode_resistence = 0.04
+
+print('diode_boost_voltage_drop', diode_boost_voltage_drop)
+
+diode_rect_voltage_drop = 0.98+ids_diode_avg*0.04
+print('diode_rect_voltage_drop', diode_rect_voltage_drop)
+
 power_dissip_fet = rds_on_fet * (ids_fet ** 2)
-power_dissip_diode = diode_bulk_resistence * (ids_diode_rms ** 2) + diode_voltage_drop * ids_diode_avg
-diode_voltage_drop = 0.98+ids_diode_avg*0.04
-print('diode_voltage_drop_rect', diode_voltage_drop)
-power_dissip_diode_rect = diode_bulk_resistence * (ids_diode_rms ** 2) + diode_voltage_drop * ids_diode_avg
+power_dissip_diode_bulk = diode_resistence * (ids_diode_avg_boost ** 2) + diode_boost_voltage_drop * ids_diode_avg_boost
+power_dissip_diode_rect = diode_resistence * (ids_diode_rms ** 2) + diode_rect_voltage_drop * ids_diode_avg
 
 print('power dissip fet', power_dissip_fet)
 
-print('power dissip diode', power_dissip_diode)
-
+print('power dissip boost diode', power_dissip_diode_bulk)
 print('total power dissip rect-diode', 4 * power_dissip_diode_rect)
-total_dissipation_power = power_dissip_fet + 4 * power_dissip_diode_rect + power_dissip_diode
+
+total_dissipation_power = power_dissip_fet + 4 * power_dissip_diode_rect + power_dissip_diode_bulk
 print('total power dissipation', total_dissipation_power)
 
 tri = 18 * 10 ** (-9) # datasheet
