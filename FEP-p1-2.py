@@ -9,10 +9,10 @@ Vin1 = 400
 Vout1 = 120
 rippleMaxOutput = 1
 Pout1 = 1500
-fs = 20000 #FET
+fs = 25000 #FET
 
-N1 = 33
-N2 = 10
+N1 = 66
+N2 = 20
 D1 = 1 / ((Vin1 / Vout1) * (N2 / N1) + 1)
 M1 = (D1 / (1 - D1)) * (N2 / N1)
 print('D=', D1)
@@ -95,11 +95,11 @@ print('C=', C1 * 10 ** 6, 'uF')
 
 # dados fet
 rds_on_fet = 0.022
-ids_fet = 5.5 # ver na simulação valor RMS
+ids_fet = 5.44 # ver na simulação valor RMS
 
 # dados diodo
-ids_diode_avg = 12.17 # ver na simulação
-ids_diode_rms = 12.17 # ver na simulação
+ids_diode_avg = 12.32 # ver na simulação
+ids_diode_rms = 17.70 # ver na simulação
 diode_voltage_drop = 0.98+ids_diode_avg*0.04
 diode_bulk_resistence = 0.04
 

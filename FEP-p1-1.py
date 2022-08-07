@@ -42,31 +42,102 @@ fsfilter = fsw_min / 10
 
 Iin = Pav / E1
 Rin = .2
-Cin = Iin / (2 * np.pi * Rin * fsw_min * 100)
+Cin = Iin / (2 * np.pi * fsfilter * 100)
 Lin = 1 / (Cin * pow(2 * np.pi * fsfilter, 2))
 
 print('Cin', Cin * 1000000, 'u')
 print('Lin', Lin * 1000000, 'u')
 
+print('Zeta', Lin/(2*np.sqrt(Cin* Lin)), 'u')
+
 print('Ffiltro', 1 / (np.sqrt(Cin * Lin) * 2 * np.pi))
 
 print('\n\n\n')
+
+# INDUTOR
+
+Ipeak = 44.1884
+Irms_inductor = 17.8488
+ILav = 13.6703
+
+print("\n\n\nINDUTOR")
+Bmax=0.1
+Jmax=300*10**4
+kw=0.6
+AeAw=L*Ipeak*Irms_inductor/(Bmax*Jmax*kw)
+print( "AeAw=",AeAw*10**8,'cm^4')
+
+M=19.45/10
+D=28.2/10
+F=19.2/10
+C=19.8/10
+Aw=M*2*D
+Ae=F*C
+print ( 'Ae=', Ae,'cm^2')
+print ( 'Aw=', Aw,'cm^2')
+print ( 'AeAw=',Ae*Aw,'cm^4')
+
+N=L*Ipeak/(Bmax*Ae*10**(-4))
+print ( 'L=',L*10**6,'uH')
+print ( 'Number of Turns N=',int(N))
+
+mu0=4*np.pi*10**-7
+lg=int(N)**2*mu0*(Ae*10**(-4))/L
+print('L=',L*10**6 )
+print ( 'N=', int(N))
+print('Total Air gap length lg=',lg*1000,'mm')
+
+Acu=Irms_inductor/Jmax
+print ('Jmax=',Jmax*10**(-4),'cm^2')
+print ( 'Conductor total cross section, Acu=',Acu*10**6,'mm^2')
+
+# PERDAS COBRE
+
+lcu=(F+M)*2+(1.2*C)*2
+lcuT=lcu*N/100
+print ( ' Length of a turn lcu=',lcu,'cm')
+print ( ' Total Length of the winding lcuT=',lcuT,'m')
+
+Ro=1.68*10**(-8)*(1+0.00404*(100-20))
+Rdc=Ro*lcuT/Acu
+print( ' DC resisitance of the winding Rdc=',Rdc,'ohm')
+fsw=fsw_min
+Skin_depth=np.sqrt(Ro/(np.pi*fsw*mu0))
+print ('fsw=',fsw/1000,'kHz')
+print ('Skin_depth=',Skin_depth*1000,'mm')
+r1=sp.sqrt(Acu/np.pi)
+print ('Radius of the conductor, r=',r1*1000,'mm')
+print ('Ratio r/Skin_depth =',r1/Skin_depth)
+ks=1+( (r1/Skin_depth)**4 )/( 48 + 0.8*(r1/Skin_depth)**4 )
+##ks=0.25+0.5*(r1/Skin_depth)+3/32*(r1/Skin_depth)**(-1)
+print('ks=',ks)
+Rac=ks*Rdc
+print('DC resistance     , Rdc=',Rdc,'ohm')
+print('AC resistance @fsw, Rac=',Rac,'ohm')
+print('AC resistance @fsw, Rac=',Ro*lcuT/(np.pi*(2*sp.sqrt(Acu/np.pi)-Skin_depth)*Skin_depth), 'ohm' )
+Iac_fsw=Ipeak/2
+Pcu=Rdc*ILav**2+Rdc/2*ks*(Iac_fsw)**2
+print('Dc copper losses', Rdc*ILav**2, 'W')
+print('AC copper losses', Rdc/2*ks*(Iac_fsw)**2, 'W')
+print( 'Copper losses Pcu=',Pcu,'W')
+
+print( 'Total losses Ptot=',Pcu + 10,'W')
 
 # power losses in components
 
 # dados fet
 rds_on_fet = 0.022
-ids_fet = 3.6 # ver na simulação valor RMS
+ids_fet = 3.5 # ver na simulação valor RMS
 
 # dados diodo
-ids_diode_avg = 6.7 # ver na simulação para 100V (eliminar filtro de entrada)
-ids_diode_rms = 12.5 # ver na simulação para 100V
+ids_diode_avg = 2.7004 # ver na simulação para 100V (eliminar filtro de entrada)
+ids_diode_rms = 4.9535 # ver na simulação para 100V
 
 # diodo boost
-ids_diode_avg_boost = 3.75 # ver na simulação para 100V
-ids_diode_rms_boost = 9.6 # ver na simulação para 100V
+ids_diode_avg_boost = 3.73749 # ver na simulação para 100V
+ids_diode_rms_boost = 6.06068 # ver na simulação para 100V
 
-diode_boost_voltage_drop = 0.98+Icap_120_peak*0.04
+diode_boost_voltage_drop = 0.98+ids_diode_avg_boost*0.04
 diode_resistence = 0.04
 
 print('diode_boost_voltage_drop', diode_boost_voltage_drop)
@@ -81,6 +152,7 @@ power_dissip_diode_rect = diode_resistence * (ids_diode_rms ** 2) + diode_rect_v
 print('power dissip fet', power_dissip_fet)
 
 print('power dissip boost diode', power_dissip_diode_bulk)
+print('power dissip rect-diode',  power_dissip_diode_rect)
 print('total power dissip rect-diode', 4 * power_dissip_diode_rect)
 
 total_dissipation_power = power_dissip_fet + 4 * power_dissip_diode_rect + power_dissip_diode_bulk
@@ -112,6 +184,7 @@ print('Total fet comutation losses', Poff + Pon)
 #
 # print('power comutation losses in diode', PowerComLossDiodeConv)
 
-total_losses = total_dissipation_power + Poff + Pon
+total_losses = total_dissipation_power + Poff + Pon + Pcu + 10
 print("Total Losses:", total_losses)
 print("Eficienty:", Pav/(total_losses+Pav))
+
