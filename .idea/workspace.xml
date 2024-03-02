@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23212c43-65ef-4263-ae93-18b21745816d" name="Changes" comment="TCP">
-      <change afterPath="$PROJECT_DIR$/FEP-p2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FEP-p1-1.py" beforeDir="false" afterPath="$PROJECT_DIR$/FEP-p1-1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FEP-p1-2.py" beforeDir="false" afterPath="$PROJECT_DIR$/FEP-p1-2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FEP-p2.py" beforeDir="false" afterPath="$PROJECT_DIR$/FEP-p2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +228,10 @@
       <workItem from="1657304547921" duration="677000" />
       <workItem from="1657839018193" duration="7168000" />
       <workItem from="1659515554746" duration="19000" />
-      <workItem from="1659860425664" duration="658000" />
+      <workItem from="1659860425664" duration="3663000" />
+      <workItem from="1659897266639" duration="2545000" />
+      <workItem from="1659981592554" duration="4928000" />
+      <workItem from="1660041536058" duration="608000" />
     </task>
     <task id="LOCAL-00001" summary="psian">
       <created>1651878877452</created>
@@ -267,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657129645998</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="TCP">
+      <created>1659861309229</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659861309229</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +305,7 @@
     <SUITE FILE_PATH="coverage/Electronic_Utilities$integratedCircuitsFelipe.coverage" NAME="integratedCircuitsFelipe Coverage Results" MODIFIED="1653685241045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p1_1.coverage" NAME="FEP-p1-1 Coverage Results" MODIFIED="1659860820953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$3_10.coverage" NAME="3.10 Coverage Results" MODIFIED="1651518150801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p2.coverage" NAME="FEP-p2 Coverage Results" MODIFIED="1659860979242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p2.coverage" NAME="FEP-p2 Coverage Results" MODIFIED="1659985288152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$TCP_IP_Equations.coverage" NAME="TCP-IP-Equations Coverage Results" MODIFIED="1657129513325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$main.coverage" NAME="main Coverage Results" MODIFIED="1656971331708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Easy-Tracker-System/Docs/Teste Vibração/Software/plots" />
     <SUITE FILE_PATH="coverage/Electronic_Utilities$FEP_p1_2.coverage" NAME="FEP-p1-2 Coverage Results" MODIFIED="1657148731883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
